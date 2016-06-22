@@ -41,6 +41,12 @@ class ListNotesTableViewController: UITableViewController {
         if let identifier = segue.identifier {
             if identifier == "displayNote" {
                 print("transitioning to the note")
+                
+                let indexPath = tableView.indexPathForSelectedRow!
+                let note = notes[indexPath.row]
+                let displayNoteVC = segue.destinationViewController as! DisplayNoteViewController
+                displayNoteVC.note = note
+                
             } else if identifier == "addNote" {
                 print("+ button tapped")
             }
