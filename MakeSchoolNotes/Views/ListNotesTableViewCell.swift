@@ -10,5 +10,7 @@ import UIKit
 
 class ListNotesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var noteTitleLbl: UILabel!
 
+    @IBOutlet weak var noteModificationTimeLbl: UILabel!
 }
