@@ -59,5 +59,25 @@ class ListNotesTableViewController: UITableViewController {
         // we'll add code later
         
     }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == .Delete {
+            notes.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }
+        
+    }
   
 }
+
+
+
+
+
+
+
+
+
+
+
