@@ -37,36 +37,38 @@ class DisplayNoteViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let listNotesTableVC = segue.destinationViewController as! ListNotesTableViewController
-        
-        if let identifier = segue.identifier {
-            if identifier == "Cancel" {
-                //print("Cancel btn tapped")
-                
-            } else if identifier == "Save" {
-                //print("Save btn tapped")
-                
-                if let oldNote = note {
-                    
-                    let newNote = Note()
-                    
-                    oldNote.content = noteContentTextView.text ?? ""
-                    oldNote.title = noteTitleTextField.text ?? ""
-                    
-                    RealmHelper.updatedNote(oldNote, newNote: newNote)
-                } else {
-                
-                    let newNote = Note()
-                    newNote.title = noteTitleTextField.text ?? ""
-                    newNote.content = noteContentTextView.text
-                    newNote.modificationTime = NSDate()
-
-                    RealmHelper.addNote(note: newNote)
-                }
-                
-                listNotesTableVC.notes = RealmHelper.retrieveNotes()
+        let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
+        if segue.identifier == "Save" {
+            // if note exists, update title and content
+            if let note = note {
+                // 1
+                let newNote = Note()
+                newNote.title = noteTitleTextField.text ?? ""
+                newNote.content = noteContentTextView.text ?? ""
+                RealmHelper.updatedNote(note, newNote: newNote)
+            } else {
+                // if note does not exist, create new note
+                let note = Note()
+                note.title = noteTitleTextField.text ?? ""
+                note.content = noteContentTextView.text ?? ""
+                note.modificationTime = NSDate()
+                // 2
+                RealmHelper.addNote(note: note)
             }
+            // 3
+            listNotesTableViewController.notes = RealmHelper.retrieveNotes()
         }
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+

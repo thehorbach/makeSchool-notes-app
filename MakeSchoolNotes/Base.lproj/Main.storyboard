@@ -50,6 +50,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Notes" id="zcA-gi-rZo">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ciX-Ko-oWr">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="0Pd-8w-2Tp" kind="show" identifier="addNote" id="i4c-Ac-X7p"/>
                             </connections>
@@ -60,7 +61,7 @@
             </objects>
             <point key="canvasLocation" x="1375" y="267"/>
         </scene>
-        <!--Title-->
+        <!--New Note-->
         <scene sceneID="rBd-Y5-sjZ">
             <objects>
                 <viewController id="0Pd-8w-2Tp" customClass="DisplayNoteViewController" customModule="MakeSchoolNotes" customModuleProvider="target" sceneMemberID="viewController">
@@ -72,16 +73,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcP-Ki-qkc">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the title here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcP-Ki-qkc">
                                 <rect key="frame" x="20" y="97" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Cbz-aX-0aX"/>
+                                    <constraint firstAttribute="width" constant="560" id="mqJ-HT-MeE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mSD-a7-e8Z">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mSD-a7-e8Z">
                                 <rect key="frame" x="20" y="150" width="560" height="312"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -96,13 +100,15 @@
                             <constraint firstItem="ZcP-Ki-qkc" firstAttribute="top" secondItem="wEu-vF-lSC" secondAttribute="bottom" constant="33" id="utJ-BK-LPx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="wu5-hm-bTA">
+                    <navigationItem key="navigationItem" title="New Note" id="wu5-hm-bTA">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tTF-8g-4vJ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="aGa-2Z-suT" kind="unwind" identifier="Cancel" unwindAction="unwindToListNotesViewController:" id="mbz-6f-Nxp"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="I6W-uL-8HQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="aGa-2Z-suT" kind="unwind" identifier="Save" unwindAction="unwindToListNotesViewController:" id="gSf-Qo-rWv"/>
                             </connections>
@@ -126,6 +132,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0sX-Tc-1fF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.17254901959999999" green="0.71372549019999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
