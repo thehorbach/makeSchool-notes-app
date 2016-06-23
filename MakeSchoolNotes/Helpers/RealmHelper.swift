@@ -33,7 +33,7 @@ class RealmHelper {
         }
     }
     
-    static func retrieveNotes(note note: Note) -> Results<Note> {
+    static func retrieveNotes() -> Results<Note> {
         let realm = try! Realm()
         return realm.objects(Note).sorted("modificationTime", ascending: false)
     }

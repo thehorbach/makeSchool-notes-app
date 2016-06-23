@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DisplayNoteViewController: UIViewController {
 
@@ -40,15 +41,19 @@ class DisplayNoteViewController: UIViewController {
         
         if let identifier = segue.identifier {
             if identifier == "Cancel" {
-                print("Cancel btn tapped")
+                //print("Cancel btn tapped")
+                
             } else if identifier == "Save" {
-                print("Save btn tapped")
+                //print("Save btn tapped")
                 
                 if let oldNote = note {
+                    
+                    let newNote = Note()
+                    
                     oldNote.content = noteContentTextView.text ?? ""
                     oldNote.title = noteTitleTextField.text ?? ""
                     
-                    listNotesTableVC.tableView.reloadData()
+                    RealmHelper.updatedNote(oldNote, newNote: newNote)
                 } else {
                 
                     let newNote = Note()
@@ -56,9 +61,10 @@ class DisplayNoteViewController: UIViewController {
                     newNote.content = noteContentTextView.text
                     newNote.modificationTime = NSDate()
 
-                    let listNotesTableVC = segue.destinationViewController as! ListNotesTableViewController
-                    listNotesTableVC.notes.append(newNote)
+                    RealmHelper.addNote(note: newNote)
                 }
+                
+                listNotesTableVC.notes = RealmHelper.retrieveNotes()
             }
         }
     }
